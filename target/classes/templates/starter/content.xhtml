@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <ui:composition>
+	<div class="container">
+		<div id="actions" class="row">
+			<div class="col-md-6">
+				<ui:insert name="content_title"/>
+			</div>
+			<div class="col-md-2">
+				<h1></h1>
+				<ui:insert name="content_button1"/>
+			</div>
+			<div class="col-md-4">
+				<h1></h1>
+				<ui:insert name="content_button2"/>
+			</div>
+		</div>
+		<div id="data" class="row">
+			<div class="table-responsive">
+  				<ui:insert name="content_data"/>
+			</div>
+		</div>
+		
+	</div>
+</ui:composition>
+</html>

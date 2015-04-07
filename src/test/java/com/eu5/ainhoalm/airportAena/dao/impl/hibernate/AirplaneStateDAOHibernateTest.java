@@ -16,7 +16,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class AirplaneStateTest {
+public class AirplaneStateDAOHibernateTest {
 
 	static AirplaneStateDAO airplaneStateDAO;
 
@@ -41,8 +41,17 @@ public class AirplaneStateTest {
 	@Test
 	public void findById() throws Exception {
 		AirplaneState obj = airplaneStateDAO.findById(1);
-		assertEquals(Integer.valueOf(1),obj.getId());
 		System.out.println("--findById()--->"+obj);     
+		assertEquals(Integer.valueOf(1),obj.getId());
+		
+	}
+	
+	@Test
+	public void findByKey() throws Exception {
+
+		AirplaneState obj = airplaneStateDAO.findByKey(10);
+		System.out.println("--findByKey()--->"+obj);     
+		assertEquals(10,obj.getCode());
 	}
 
 	private void ImprimirListado(List<AirplaneState> lista)
@@ -85,13 +94,7 @@ public class AirplaneStateTest {
 		assertNull(objPersist);
 	}
 	
-	@Test
-	public void findByKey() throws Exception {
-
-		AirplaneState obj = airplaneStateDAO.findByKey(10);
-		System.out.println("--findByKey()--->"+obj);     
-		assertEquals(10,obj.getCode());
-	}
+	
 
 	 
 

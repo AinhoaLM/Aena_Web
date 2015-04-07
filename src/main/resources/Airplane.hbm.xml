@@ -13,7 +13,7 @@
 		<property name="model" />	
 		<property name="msn"/>
 		<property name="nSeats"/>
-		<many-to-one name="state">
+		<many-to-one name="state"  fetch="join" lazy="false">
             <column name="idState"  />
     	</many-to-one>
     

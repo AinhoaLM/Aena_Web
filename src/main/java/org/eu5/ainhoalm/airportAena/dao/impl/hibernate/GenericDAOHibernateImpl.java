@@ -36,6 +36,8 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 		}catch(Exception e){
 			session.getTransaction().rollback();
 			throw e;
+		}finally{
+			HibernateUtil.getSessionFactory().getCurrentSession().close();
 		}
 		return object;
 		
@@ -54,6 +56,8 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 		}catch(Exception e){
 			session.getTransaction().rollback();
 			throw e;
+		}finally{
+			HibernateUtil.getSessionFactory().getCurrentSession().close();
 		}
 		return listOfState;
 	}
@@ -70,6 +74,8 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 		}catch(Exception e){
 			session.getTransaction().rollback();
 			throw e;
+		}finally{
+			HibernateUtil.getSessionFactory().getCurrentSession().close();
 		}
 		return id;
 		
@@ -86,6 +92,8 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 		}catch(Exception e){
 			session.getTransaction().rollback();
 			throw e;
+		}finally{
+			HibernateUtil.getSessionFactory().getCurrentSession().close();
 		}
 	}
 
@@ -100,6 +108,8 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 		}catch(Exception e){
 			session.getTransaction().rollback();
 			throw e;
+		}finally{
+			HibernateUtil.getSessionFactory().getCurrentSession().close();
 		}
 	}
 

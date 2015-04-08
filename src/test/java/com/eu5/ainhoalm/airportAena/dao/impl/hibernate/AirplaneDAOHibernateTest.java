@@ -2,7 +2,6 @@ package com.eu5.ainhoalm.airportAena.dao.impl.hibernate;
 
 import static org.junit.Assert.*;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.eu5.ainhoalm.airportAena.dao.AirplaneDAO;
@@ -10,9 +9,7 @@ import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 import org.eu5.ainhoalm.airportAena.dao.impl.hibernate.AirplaneDAOHibernateImpl;
 import org.eu5.ainhoalm.airportAena.dao.impl.hibernate.AirplaneStateDAOHibernateImpl;
 import org.eu5.ainhoalm.airportAena.model.Airplane;
-import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 import org.eu5.ainhoalm.airportAena.utils.HibernateUtil;
-import org.hibernate.Session;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -66,9 +63,8 @@ public class AirplaneDAOHibernateTest {
 	
 	@Test
 	public void findByState() throws Exception {
-		AirplaneState obj=airplaneStateDAO.findByKey(50);
-		List<Airplane> listOfObj = airplaneDAO.findByState(obj);
-		System.out.println("--findByKey()--->"+obj);     
+		List<Airplane> listOfObj = airplaneDAO.findByState(50);
+		System.out.println("--findByKey()--->50");     
 		ImprimirListado(listOfObj); 
 		assertNotEquals(0, listOfObj.size());
 	}

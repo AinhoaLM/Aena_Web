@@ -7,9 +7,9 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 
-
 import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
-import org.eu5.ainhoalm.airportAena.dao.impl.hibernate.AirplaneStateDAOHibernateImpl;
+import org.eu5.ainhoalm.airportAena.dao.DAOAbstractFactory;
+import org.eu5.ainhoalm.airportAena.dao.DAOFactory;
 import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 import org.eu5.ainhoalm.airportAena.utils.HibernateUtil;
 import org.junit.AfterClass;
@@ -18,11 +18,13 @@ import org.junit.Test;
 
 public class AirplaneStateDAOHibernateTest {
 
-	static AirplaneStateDAO airplaneStateDAO;
+	static AirplaneStateDAO airplaneStateDAO=null;
 
 	@BeforeClass  
 	public static void setUpClass() throws Exception {   
-		 airplaneStateDAO = new AirplaneStateDAOHibernateImpl();   
+		 //airplaneStateDAO = new AirplaneStateDAOHibernateImpl();   
+		DAOFactory factoriaDAO=  DAOAbstractFactory.getInstance();
+		airplaneStateDAO = factoriaDAO.getAirplaneStateDAO();
 	}  
 
 	@AfterClass  

@@ -6,7 +6,6 @@ package org.eu5.ainhoalm.airportAena.dao.impl.hibernate;
 import java.util.List;
 import org.eu5.ainhoalm.airportAena.dao.AirplaneDAO;
 import org.eu5.ainhoalm.airportAena.model.Airplane;
-import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 import org.eu5.ainhoalm.airportAena.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -38,13 +37,13 @@ public class AirplaneDAOHibernateImpl extends GenericDAOHibernateImpl<Airplane, 
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Airplane> findByState(AirplaneState state) {
+	public List<Airplane> findByState(int code) {
 		Session session= HibernateUtil.getSessionFactory().getCurrentSession();
 		List<Airplane> listOfObj;
 		try{
 		session.beginTransaction();
 		Query q=session.createQuery(" from Airplane  where state.code=:pcode");
-		q.setInteger("pcode", state.getCode());
+		q.setInteger("pcode", code);
 		listOfObj = q.list();       
         session.getTransaction().commit();
 		}catch(Exception e){

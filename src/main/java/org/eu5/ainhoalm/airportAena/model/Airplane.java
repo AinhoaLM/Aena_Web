@@ -14,7 +14,7 @@ public class Airplane implements Serializable {
 	
 	public Integer getId() {return id;}
 	private void setId(Integer id) {this.id = id;}
-	
+
 	public String getRegistration() {return registration;}
 	public void setRegistration(String registration) {this.registration = registration;}
 	

@@ -10,7 +10,7 @@ public interface AirplaneStateService {
 	public void airplaneStateDelete(AirplaneState airplaneState);
 	public List<AirplaneState> findAllAirplaneState();
 	public AirplaneState findByKeyAirplaneState(int code);
-	public AirplaneState findByIdAirplaneState(Integer id);
+	public AirplaneState findByIdAirplaneState(Long id);
 }
 
 

@@ -42,9 +42,9 @@ public class AirplaneStateDAOHibernateTest {
 
 	@Test
 	public void findById() throws Exception {
-		AirplaneState obj = airplaneStateDAO.findById(1);
+		AirplaneState obj = airplaneStateDAO.findById(Long.valueOf(1));
 		System.out.println("--findById()--->"+obj);     
-		assertEquals(Integer.valueOf(1),obj.getId());
+		assertEquals(Long.valueOf(1),obj.getId());
 		
 	}
 	
@@ -75,7 +75,7 @@ public class AirplaneStateDAOHibernateTest {
 		//Insertar
 		String id=airplaneStateDAO.insert(obj);	
 		System.out.println("--Insertar--->"+id);
-		AirplaneState objPersist = airplaneStateDAO.findById(Integer.valueOf(id));
+		AirplaneState objPersist = airplaneStateDAO.findById(Long.valueOf(id));
 
 		assertNotNull(objPersist);
 		assertNotEquals("", id);
@@ -86,12 +86,12 @@ public class AirplaneStateDAOHibernateTest {
 		String textUpdate="Para pruebas modificado";
 		objPersist.setDescription(textUpdate);		
 		airplaneStateDAO.save(objPersist);
-		objPersist = airplaneStateDAO.findById(Integer.valueOf(id));
+		objPersist = airplaneStateDAO.findById(Long.valueOf(id));
 		assertEquals("Descripción modificada:", textUpdate,objPersist.getDescription());
 		System.out.println("--Modificar--->"+objPersist.getDescription());
 		//Eliminar
 		airplaneStateDAO.remove(objPersist);
-		objPersist = airplaneStateDAO.findById(Integer.valueOf(id));
+		objPersist = airplaneStateDAO.findById(Long.valueOf(id));
 		System.out.println("--Eliminar--->"+objPersist);
 		assertNull(objPersist);
 	}

@@ -8,7 +8,7 @@ import org.eu5.ainhoalm.airportAena.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class AirplaneStateDAOHibernateImpl extends GenericDAOHibernateImpl<AirplaneState, Integer> implements AirplaneStateDAO {
+public class AirplaneStateDAOHibernateImpl extends GenericDAOHibernateImpl<AirplaneState, Long> implements AirplaneStateDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override

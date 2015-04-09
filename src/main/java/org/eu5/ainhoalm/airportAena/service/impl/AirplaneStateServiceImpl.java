@@ -43,11 +43,11 @@ public class AirplaneStateServiceImpl implements AirplaneStateService{
 
 	@Override
 	public AirplaneState findByKeyAirplaneState(int code) {
-		return airplaneStateDAO.findById(code);
+		return airplaneStateDAO.findByKey(code);
 	}
 
 	@Override
-	public AirplaneState findByIdAirplaneState(Integer id) {
+	public AirplaneState findByIdAirplaneState(Long id) {
 		return airplaneStateDAO.findById(id);
 	}
 

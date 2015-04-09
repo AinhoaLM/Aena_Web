@@ -11,7 +11,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 
-public class AirplaneDAOHibernateImpl extends GenericDAOHibernateImpl<Airplane, Integer> implements AirplaneDAO {
+public class AirplaneDAOHibernateImpl extends GenericDAOHibernateImpl<Airplane, Long> implements AirplaneDAO {
 
 
 

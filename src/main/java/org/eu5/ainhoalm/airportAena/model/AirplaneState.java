@@ -5,12 +5,13 @@ import java.io.Serializable;
 public class AirplaneState implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
+	private Long id;
 	private int code;
 	private String description;
 	
-	public Integer getId() {return id;}
-	private void setId(Integer id) {this.id = id;}
+	public Long getId() {return id;}
+	@SuppressWarnings("unused")
+	private void setId(Long id) {this.id = id;}
 
 
 	public int getCode() {return code;}

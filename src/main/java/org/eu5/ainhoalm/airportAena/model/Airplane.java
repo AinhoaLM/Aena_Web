@@ -5,15 +5,16 @@ import java.io.Serializable;
 public class Airplane implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
+	private Long id;
 	private String registration;
 	private String model;
 	private String msn;
 	private int nSeats;
 	private AirplaneState state;
 	
-	public Integer getId() {return id;}
-	private void setId(Integer id) {this.id = id;}
+	public Long getId() {return id;}
+	@SuppressWarnings("unused")
+	private void setId(Long id) {this.id = id;}
 
 	public String getRegistration() {return registration;}
 	public void setRegistration(String registration) {this.registration = registration;}

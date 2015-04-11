@@ -3,8 +3,6 @@ package org.eu5.ainhoalm.airportAena.service;
 import java.util.List;
 
 
-
-import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 
 public interface AirplaneStateService {
@@ -15,8 +13,7 @@ public interface AirplaneStateService {
 	public AirplaneState findByKeyAirplaneState(int code);
 	public AirplaneState findByIdAirplaneState(Long id);
 	
-	public AirplaneStateDAO getAirplaneStateDAO();
-	public void setAirplaneSateDAO(AirplaneStateDAO airplaneStateDAO);
+	
 }
 
 

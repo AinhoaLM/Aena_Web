@@ -8,7 +8,5 @@
 	</bean>
 	<bean id="airplaneDAO" class="org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneDAOHibernateImpl">
 	</bean>
-	<bean id="airplaneStateSERVICE" class="org.eu5.ainhoalm.airportAena.service.impl.AirplaneStateServiceImpl">
-	</bean>
 
 </beans>

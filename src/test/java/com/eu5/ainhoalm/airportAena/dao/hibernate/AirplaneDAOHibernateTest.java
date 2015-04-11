@@ -1,4 +1,4 @@
-package com.eu5.ainhoalm.airportAena.dao.impl.hibernate;
+package com.eu5.ainhoalm.airportAena.dao.hibernate;
 
 import static org.junit.Assert.*;
 
@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.eu5.ainhoalm.airportAena.dao.AirplaneDAO;
 import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
-import org.eu5.ainhoalm.airportAena.dao.impl.hibernate.AirplaneDAOHibernateImpl;
-import org.eu5.ainhoalm.airportAena.dao.impl.hibernate.AirplaneStateDAOHibernateImpl;
+import org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneDAOHibernateImpl;
+import org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneStateDAOHibernateImpl;
 import org.eu5.ainhoalm.airportAena.model.Airplane;
 import org.eu5.ainhoalm.airportAena.utils.HibernateUtil;
 import org.junit.AfterClass;

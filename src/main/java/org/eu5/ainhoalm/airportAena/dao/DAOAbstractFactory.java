@@ -5,7 +5,6 @@ public abstract class DAOAbstractFactory {
 	
 	public static DAOFactory getInstance() {
 		return new DAOHibernateFactory();
-	
 	}
 
 }

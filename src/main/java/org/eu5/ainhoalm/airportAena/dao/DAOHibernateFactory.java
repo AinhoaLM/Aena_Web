@@ -1,7 +1,7 @@
 package org.eu5.ainhoalm.airportAena.dao;
 
-import org.eu5.ainhoalm.airportAena.dao.impl.hibernate.AirplaneDAOHibernateImpl;
-import org.eu5.ainhoalm.airportAena.dao.impl.hibernate.AirplaneStateDAOHibernateImpl;
+import org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneDAOHibernateImpl;
+import org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneStateDAOHibernateImpl;
 
 public class DAOHibernateFactory implements DAOFactory{
 	

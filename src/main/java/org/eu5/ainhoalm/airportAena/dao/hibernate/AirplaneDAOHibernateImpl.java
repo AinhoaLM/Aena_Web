@@ -1,4 +1,4 @@
-package org.eu5.ainhoalm.airportAena.dao.impl.hibernate;
+package org.eu5.ainhoalm.airportAena.dao.hibernate;
 
 
 

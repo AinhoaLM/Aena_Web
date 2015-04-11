@@ -2,6 +2,7 @@ package org.eu5.ainhoalm.airportAena.service;
 
 import java.util.List;
 
+
 import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 
 public interface AirplaneStateService {
@@ -11,6 +12,8 @@ public interface AirplaneStateService {
 	public List<AirplaneState> findAllAirplaneState();
 	public AirplaneState findByKeyAirplaneState(int code);
 	public AirplaneState findByIdAirplaneState(Long id);
+	
+	
 }
 
 

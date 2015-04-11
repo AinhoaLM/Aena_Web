@@ -24,8 +24,8 @@ public class AirplaneStateServiceTest {
 	@BeforeClass  
 	public static void setUpClass() throws Exception {   
 		service=(AirplaneStateService)factoria.getBean("airplaneStateSERVICE");
-		dao=(AirplaneStateDAO)factoria.getBean("airplaneStateDAO");
-		service.setAirplaneSateDAO(dao);
+		//dao=(AirplaneStateDAO)factoria.getBean("airplaneStateDAO");
+		//service.setAirplaneSateDAO(dao);
 	}  
 	
 	@AfterClass  

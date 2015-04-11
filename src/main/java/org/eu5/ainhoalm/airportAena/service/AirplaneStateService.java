@@ -16,7 +16,7 @@ public interface AirplaneStateService {
 	public AirplaneState findByIdAirplaneState(Long id);
 	
 	public AirplaneStateDAO getAirplaneStateDAO();
-	public void setAirplaneSateDAO(AirplaneStateDAO airplaneStateDAO);
+	public void setAirplaneStateDAO(AirplaneStateDAO airplaneStateDAO);
 }
 
 

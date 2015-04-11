@@ -7,7 +7,7 @@ import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 //import org.eu5.ainhoalm.airportAena.dao.DAOFactory;
 import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 import org.eu5.ainhoalm.airportAena.service.AirplaneStateService;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+//import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AirplaneStateServiceImpl implements AirplaneStateService{
 
@@ -26,7 +26,7 @@ public class AirplaneStateServiceImpl implements AirplaneStateService{
 	}
 
 	@Override
-	public void setAirplaneSateDAO(AirplaneStateDAO airplaneStateDAO) {
+	public void setAirplaneStateDAO(AirplaneStateDAO airplaneStateDAO) {
 		this.airplaneStateDAO = airplaneStateDAO;
 	}
 

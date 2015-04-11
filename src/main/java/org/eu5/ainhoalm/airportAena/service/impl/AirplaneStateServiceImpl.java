@@ -12,15 +12,23 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class AirplaneStateServiceImpl implements AirplaneStateService{
 
 	private AirplaneStateDAO airplaneStateDAO=null;
-	private ClassPathXmlApplicationContext factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
+	//private ClassPathXmlApplicationContext factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
 	
 	public AirplaneStateServiceImpl() {
 		//DAOFactory factory=DAOAbstractFactory.getInstance();
 		//airplaneStateDAO= factory.getAirplaneStateDAO();
-		airplaneStateDAO =(AirplaneStateDAO)factoria.getBean("airplaneStateDAO");	
+		//airplaneStateDAO =(AirplaneStateDAO)factoria.getBean("airplaneStateDAO");	
 	}
 	
+	@Override
+	public AirplaneStateDAO getAirplaneStateDAO() {
+		return airplaneStateDAO;
+	}
 
+	@Override
+	public void setAirplaneSateDAO(AirplaneStateDAO airplaneStateDAO) {
+		this.airplaneStateDAO = airplaneStateDAO;
+	}
 
 	@Override
 	public void airplaneStateSave(AirplaneState airplaneState) {

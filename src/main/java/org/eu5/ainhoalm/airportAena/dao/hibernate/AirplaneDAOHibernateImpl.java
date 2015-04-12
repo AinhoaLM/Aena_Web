@@ -1,8 +1,5 @@
 package org.eu5.ainhoalm.airportAena.dao.hibernate;
 
-
-
-
 import java.util.List;
 import org.eu5.ainhoalm.airportAena.dao.AirplaneDAO;
 import org.eu5.ainhoalm.airportAena.model.Airplane;
@@ -12,8 +9,6 @@ import org.hibernate.Session;
 
 
 public class AirplaneDAOHibernateImpl extends GenericDAOHibernateImpl<Airplane, Long> implements AirplaneDAO {
-
-
 
 	@SuppressWarnings("unchecked")
 	@Override

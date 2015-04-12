@@ -104,3 +104,24 @@ CREATE TABLE IF NOT EXISTS `airport_gates` (
 --
 ALTER TABLE `airplane`
   ADD CONSTRAINT `airplane_ibfk_1` FOREIGN KEY (`IdState`) REFERENCES `airplane_state` (`Id`);
+
+  
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `company`
+--
+
+CREATE TABLE IF NOT EXISTS `company` (
+  `Id` int(11) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `LicenseCode` varchar(15) DEFAULT NULL,
+  `ConcesionDate` date DEFAULT NULL,
+  `ExpirationDate` date DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `company` (`Id`, `Name`, `LicenseCode`, `ConcessionDate`, `ExpirationDate`) VALUES
+(1, 'Air Nostrum', NULL, '2015-01-01', '2015-12-31'),
+(2, 'Air Europa', NULL, '2014-01-01', '2015-11-01'),
+(3, 'Iberia', NULL, '2013-01-01', '2015-10-01');

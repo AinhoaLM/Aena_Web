@@ -3,20 +3,15 @@ package org.eu5.ainhoalm.airportAena.dao.hibernate;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-
 import org.eu5.ainhoalm.airportAena.dao.GenericDAO;
 import org.eu5.ainhoalm.airportAena.utils.HibernateUtil;
 import org.hibernate.Session;
-
-
-
 
 public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> implements GenericDAO<T,Id> {
 
 	private Class<T> claseDePersistencia;
 	//Session session=HibernateHelper.getSessionFactory().openSession();
 	//session= HibernateHelper.getSessionFactory().getCurrentSession();
-	
 	
 	@SuppressWarnings("unchecked")
 	public GenericDAOHibernateImpl() {
@@ -33,13 +28,14 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 			session.beginTransaction();
 			object=(T)session.get(claseDePersistencia,id);
 			session.getTransaction().commit();
+			return object;
 		}catch(Exception e){
 			session.getTransaction().rollback();
 			throw e;
 		}finally{
 			HibernateUtil.getSessionFactory().getCurrentSession().close();
 		}
-		return object;
+		
 		
 	}
 
@@ -48,18 +44,19 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 	@Override
 	public List<T> findAll() {
 		Session session= HibernateUtil.getSessionFactory().getCurrentSession();
-		List<T> listOfState=null;
+		List<T> listOfObject=null;
 		try{
 			session.beginTransaction();
-			listOfState = session.createQuery(" from "+claseDePersistencia.getSimpleName()).list(); 
+			listOfObject = session.createQuery(" from "+claseDePersistencia.getSimpleName()).list(); 
 			session.getTransaction().commit();
+			return listOfObject;
 		}catch(Exception e){
 			session.getTransaction().rollback();
 			throw e;
 		}finally{
 			HibernateUtil.getSessionFactory().getCurrentSession().close();
 		}
-		return listOfState;
+		
 	}
 
 
@@ -69,15 +66,16 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 		String id;
 		try{
 			session.beginTransaction();
-			id=	session.save(object).toString();
+			id=session.save(object).toString();
 			session.getTransaction().commit();
+			return id;
 		}catch(Exception e){
 			session.getTransaction().rollback();
 			throw e;
 		}finally{
 			HibernateUtil.getSessionFactory().getCurrentSession().close();
 		}
-		return id;
+		
 		
 	}
 
@@ -112,10 +110,5 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 			HibernateUtil.getSessionFactory().getCurrentSession().close();
 		}
 	}
-
-
-
-	
-	
 	
 }

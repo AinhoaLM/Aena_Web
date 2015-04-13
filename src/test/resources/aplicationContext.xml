@@ -8,6 +8,7 @@
 
 	<!-- <context:property-placeholder location="classpath*:META-INF/spring/*.properties" 
 		/> -->
+	
 	<bean class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" id="dataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -17,6 +18,7 @@
 	
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="META-INF/persistence.xml" />
 		<property name="persistenceUnitName" value="persistenceUnit" />
 		<property name="dataSource" ref="dataSource" />
 		

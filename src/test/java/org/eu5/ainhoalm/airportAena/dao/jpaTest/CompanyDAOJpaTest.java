@@ -1,4 +1,4 @@
-package com.eu5.ainhoalm.airportAena.dao.jpa;
+package org.eu5.ainhoalm.airportAena.dao.jpaTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

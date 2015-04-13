@@ -1,4 +1,4 @@
-package org.eu5.ainhoalm.airportAena.service.impl;
+package org.eu5.ainhoalm.airportAena.service.implTest;
 
 
 import static org.junit.Assert.assertNotNull;

@@ -121,7 +121,11 @@ CREATE TABLE IF NOT EXISTS `company` (
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE `company` CHANGE `ConcesionDate` `ConcessionDate` DATE NULL DEFAULT NULL 
+
 INSERT INTO `company` (`Id`, `Name`, `LicenseCode`, `ConcessionDate`, `ExpirationDate`) VALUES
 (1, 'Air Nostrum', NULL, '2015-01-01', '2015-12-31'),
 (2, 'Air Europa', NULL, '2014-01-01', '2015-11-01'),
 (3, 'Iberia', NULL, '2013-01-01', '2015-10-01');
+
+ALTER TABLE `company` CHANGE `Id` `Id` INT( 11 ) NOT NULL AUTO_INCREMENT 

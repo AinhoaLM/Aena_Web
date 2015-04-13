@@ -6,7 +6,7 @@
 <hibernate-mapping package="org.eu5.ainhoalm.airportAena.model">
 	<class name="" table="Airport">
 		<id name="id" column="id">
-			<!-- para generar desde código el id autonumérico en vez de en clase -->
+			<!-- para generar desde código el id autonumérico en vez de en la tabla -->
 			<generator class="increment" />
 		</id>
 		<property name="Icao"/>

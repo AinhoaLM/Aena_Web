@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 
+
 import org.eu5.ainhoalm.airportAena.dao.CompanyDAO;
-import org.eu5.ainhoalm.airportAena.dao.jpa.CompanyDAOJpaImpl;
 import org.eu5.ainhoalm.airportAena.model.annotation.Company;
 import org.eu5.ainhoalm.airportAena.utils.JPAUtil;
 import org.junit.AfterClass;
@@ -18,15 +18,15 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class CompanyDAOJpaTest {
+
+public class CompanyDAOJpaTest   {
 	static CompanyDAO sut=null;
-	//static ClassPathXmlApplicationContext factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
+	static ClassPathXmlApplicationContext factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
 
 	
 	@BeforeClass  
-	public static void setUpClass() throws Exception {   
-		//sut= (CompanyDAO)factoria.getBean("companyDAO");
-		sut= new CompanyDAOJpaImpl();		
+	public static void setUpClass() throws Exception {  
+		sut= (CompanyDAO)factoria.getBean("companyDAO");	
 	}  
 
 	@AfterClass  
@@ -60,7 +60,7 @@ public class CompanyDAOJpaTest {
 
 	@Test
 	public void crudCompany() {
-		Long idTemp=99L;
+		
 		String licenseCode="99";
 		String name="Para pruebas";
 		Date expirationDate=new Date();

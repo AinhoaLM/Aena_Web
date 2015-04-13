@@ -21,13 +21,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class AirplaneStateDAOHibernateTest {
 
 	static AirplaneStateDAO airplaneStateDAO=null;
-	static ClassPathXmlApplicationContext factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
+	static ClassPathXmlApplicationContext factoria;
 
 	@BeforeClass  
 	public static void setUpClass() throws Exception {   
 		 //airplaneStateDAO = new AirplaneStateDAOHibernateImpl();   
 		//DAOFactory factoriaDAO=  DAOAbstractFactory.getInstance();
 		//airplaneStateDAO = factoriaDAO.getAirplaneStateDAO();
+		factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
 		airplaneStateDAO= (AirplaneStateDAO)factoria.getBean("airplaneStateDAO");
 		
 	}  

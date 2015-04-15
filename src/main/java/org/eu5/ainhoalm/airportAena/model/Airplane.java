@@ -11,6 +11,7 @@ public class Airplane implements Serializable {
 	private String msn;
 	private int nSeats;
 	private AirplaneState state;
+	private Integer idCompany;
 	
 	public Long getId() {return id;}
 	@SuppressWarnings("unused")
@@ -31,17 +32,23 @@ public class Airplane implements Serializable {
 	public AirplaneState getState() {return state;}
 	public void setState(AirplaneState state) {this.state = state;}
 	
+	public Integer getIdCompany() {return idCompany;}
+	public void setIdCompany(Integer idCompany) {this.idCompany = idCompany;}
+		
+	
 	@Override
 	public String toString() {
 		return "Airplane [id=" + id + ", registration=" + registration
 				+ ", model=" + model + ", msn=" + msn + ", nSeats=" + nSeats
-				+ ", state=" + state + "]";
+				+ ", state=" + state + ", idCompany=" + idCompany + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((registration == null) ? 0 : registration.hashCode());
 		return result;
 	}
 	@Override
@@ -58,8 +65,38 @@ public class Airplane implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (idCompany == null) {
+			if (other.idCompany != null)
+				return false;
+		} else if (!idCompany.equals(other.idCompany))
+			return false;
+		if (model == null) {
+			if (other.model != null)
+				return false;
+		} else if (!model.equals(other.model))
+			return false;
+		if (msn == null) {
+			if (other.msn != null)
+				return false;
+		} else if (!msn.equals(other.msn))
+			return false;
+		if (nSeats != other.nSeats)
+			return false;
+		if (registration == null) {
+			if (other.registration != null)
+				return false;
+		} else if (!registration.equals(other.registration))
+			return false;
+		if (state == null) {
+			if (other.state != null)
+				return false;
+		} else if (!state.equals(other.state))
+			return false;
 		return true;
 	}
+	
+	
+	
 	
 	
 	

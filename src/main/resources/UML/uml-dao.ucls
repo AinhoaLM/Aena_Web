@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneDAOHibernateImpl" 
+    project="Aena_Web" 
+    file="/Aena_Web/src/main/java/org/eu5/ainhoalm/airportAena/dao/hibernate/AirplaneDAOHibernateImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="136" y="230"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneStateDAOHibernateImpl" 
+    project="Aena_Web" 
+    file="/Aena_Web/src/main/java/org/eu5/ainhoalm/airportAena/dao/hibernate/AirplaneStateDAOHibernateImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="368" y="228"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="org.eu5.ainhoalm.airportAena.dao.hibernate.GenericDAOHibernateImpl" 
+    project="Aena_Web" 
+    file="/Aena_Web/src/main/java/org/eu5/ainhoalm/airportAena/dao/hibernate/GenericDAOHibernateImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="209" x="172" y="-63"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="4" language="java" name="org.eu5.ainhoalm.airportAena.dao.GenericDAO" project="Aena_Web" 
+    file="/Aena_Web/src/main/java/org/eu5/ainhoalm/airportAena/dao/GenericDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="542" y="32"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="5" language="java" name="org.eu5.ainhoalm.airportAena.service.impl.AirplaneStateServiceImpl" 
+    project="Aena_Web" 
+    file="/Aena_Web/src/main/java/org/eu5/ainhoalm/airportAena/service/impl/AirplaneStateServiceImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="926" y="261"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="6">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <generalization id="7">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="8">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

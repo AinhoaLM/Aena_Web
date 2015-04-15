@@ -9,38 +9,42 @@ import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 import org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneDAOHibernateImpl;
 import org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneStateDAOHibernateImpl;
 import org.eu5.ainhoalm.airportAena.model.Airplane;
-import org.eu5.ainhoalm.airportAena.utils.HibernateUtil;
+import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class AirplaneDAOHibernateTest {
 	
-	static AirplaneDAO airplaneDAO;
-	static AirplaneStateDAO airplaneStateDAO;
+	static AirplaneDAO sut;
+	static AirplaneStateDAO state;
 	
 	String id;
 	String registration="AAA";
 	String msn ="111";
 	String model="Modelo";
 	int nSeats=20;
+	int idCompany=1;
 
 	@BeforeClass  
 	public static void setUpClass() throws Exception {   
-		 airplaneDAO = new AirplaneDAOHibernateImpl();  
-		 airplaneStateDAO = new AirplaneStateDAOHibernateImpl();
+		sut = new AirplaneDAOHibernateImpl(); 
+		state= new AirplaneStateDAOHibernateImpl();
+		System.out.println("========================================================================================================");
+		System.out.println("TEST AIRPLANE" );
+		System.out.println("========================================================================================================");
 	}  
 
 	@AfterClass  
 	public static void tearDownClass() throws Exception {   
-		HibernateUtil.getSessionFactory().close();  
+		//HibernateUtil.getSessionFactory().close();  
 	} 
 	
 
 	@Test
 	public void findAll() throws Exception {
-		List<Airplane> listOfObj = airplaneDAO.findAll();
 		System.out.println("--findAll()--->");
+		List<Airplane> listOfObj = sut.findAll();
 		ImprimirListado(listOfObj); 
 		assertNotNull("Account list is null.", listOfObj);
 		assertNotEquals(0, listOfObj.size());
@@ -49,22 +53,24 @@ public class AirplaneDAOHibernateTest {
 	
 	@Test
 	public void findById() throws Exception {
-		Airplane obj = airplaneDAO.findById(Long.valueOf(1));
-		System.out.println("--findById()--->"+obj);
+		System.out.println("--findById()--->");
+		Airplane obj = sut.findById(Long.valueOf(1));
+		System.out.println(obj);
 		assertEquals(Long.valueOf(1),obj.getId());     
 	}
 	
 	@Test
 	public void findByKey() throws Exception {
-		Airplane obj = airplaneDAO.findByKey("EC-LQV");
-		System.out.println("--findByKey()--->"+obj);     
+		System.out.println("--findByKey()--->"); 
+		Airplane obj = sut.findByKey("EC-LQV");
+		System.out.println(obj);     
 		assertEquals("EC-LQV",obj.getRegistration());
 	}
 	
 	@Test
 	public void findByState() throws Exception {
-		List<Airplane> listOfObj = airplaneDAO.findByState(50);
-		System.out.println("--findByKey()--->50");     
+		System.out.println("--findByKey()--->50 Correcto");     
+		List<Airplane> listOfObj = sut.findByState(50);
 		ImprimirListado(listOfObj); 
 		assertNotEquals(0, listOfObj.size());
 	}
@@ -73,41 +79,44 @@ public class AirplaneDAOHibernateTest {
 	@Test
 	public void crudAirplane() {
 		
-		Airplane obj= createAirplane(registration, msn, model, nSeats);
+		Airplane obj= createObjAirplane(registration, msn, model, nSeats, idCompany);
 		//Insertar
-		String id=airplaneDAO.insert(obj);	
-		System.out.println("--Insertar--->"+id);
-		Airplane objPersist = airplaneDAO.findById(Long.valueOf(id));
-		
+		System.out.println("--Insertar--->");
+		String id=sut.insert(obj);	
+		System.out.println(id);
+		Airplane objPersist = sut.findById(Long.valueOf(id));
+		System.out.println(objPersist);
 		assertNotNull(objPersist);
-		assertNotEquals("", id);
-		assertEquals("Matrícula:", registration,objPersist.getRegistration());
-		assertEquals("Tipo:", msn,objPersist.getMsn());
-		assertEquals("Modelo:", model,objPersist.getModel());
-		assertEquals("Asientos:", nSeats,objPersist.getnSeats());
-		
+		assertEquals(obj, objPersist);
+
 		//Modificar
-		String textUpdate="Modificado";
-		objPersist.setModel(textUpdate);		
-		airplaneDAO.save(objPersist);
-		objPersist = airplaneDAO.findById(Long.valueOf(id));
-		assertEquals("Descripción modificada:", textUpdate,objPersist.getModel());
-		System.out.println("--Modificar--->"+objPersist.getModel());
-		
+		System.out.println("--Modificar--->"); 
+		String textUpdate="TEST";		
+		obj.setModel(textUpdate);
+		sut.save(obj);
+		objPersist = sut.findById(Long.valueOf(id));
+		System.out.println(objPersist);
+		assertEquals(obj,objPersist);
+
 		//Eliminar
-		airplaneDAO.remove(objPersist);
-		objPersist = airplaneDAO.findById(Long.valueOf(id));
-		System.out.println("--Eliminar--->"+objPersist);
+		System.out.println("--Eliminar--->"); 
+		sut.remove(objPersist);
+		objPersist = sut.findById(Long.valueOf(id));
+		System.out.println(objPersist);
 		assertNull(objPersist);
-		
+
 	}
 	
-	private Airplane createAirplane(String registration, String msn,String model, Integer nSeats){
+	private Airplane createObjAirplane(String registration, String msn,String model, Integer nSeats, Integer idCompany){
 		Airplane obj = new Airplane();
 		obj.setRegistration(registration);
 		obj.setMsn(msn);
 		obj.setModel(model);
 		obj.setnSeats(nSeats);
+		obj.setIdCompany(idCompany);
+		AirplaneState objState = state.findByKey(50);
+		obj.setState(objState);
+		
 		return obj;
 	}
 	

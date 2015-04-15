@@ -15,7 +15,7 @@
 		<property name="url" value="jdbc:mysql://localhost:3306/airport_aena" />
 		<property name="username" value="root" />
 	</bean>
-	
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceXmlLocation" value="META-INF/persistence.xml" />

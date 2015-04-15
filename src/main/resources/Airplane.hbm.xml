@@ -16,7 +16,7 @@
 		<many-to-one name="state"  fetch="join" lazy="false">
             <column name="idState"  />
     	</many-to-one>
-    
+    	<property name="idCompany" />
 		
 	</class>
 </hibernate-mapping>

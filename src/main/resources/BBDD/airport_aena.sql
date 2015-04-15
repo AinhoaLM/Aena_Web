@@ -129,3 +129,9 @@ INSERT INTO `company` (`Id`, `Name`, `LicenseCode`, `ConcessionDate`, `Expiratio
 (3, 'Iberia', NULL, '2013-01-01', '2015-10-01');
 
 ALTER TABLE `company` CHANGE `Id` `Id` INT( 11 ) NOT NULL AUTO_INCREMENT 
+
+ALTER TABLE `airport_gates` CHANGE `State` `Status` TINYINT( 1 ) NOT NULL 
+ALTER TABLE `airport_gates` CHANGE `Code` `Code` VARCHAR( 4 ) NOT NULL 
+
+ALTER TABLE `airplane` ADD UNIQUE (`Registration`)
+ALTER TABLE `airplane` ADD `IdCompany` INT NOT NULL AFTER `IdState` 

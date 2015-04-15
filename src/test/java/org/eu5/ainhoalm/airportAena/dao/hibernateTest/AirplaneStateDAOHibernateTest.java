@@ -8,6 +8,7 @@ import java.util.List;
 
 
 
+
 import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 //import org.eu5.ainhoalm.airportAena.dao.DAOAbstractFactory;
 //import org.eu5.ainhoalm.airportAena.dao.DAOFactory;
@@ -20,7 +21,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AirplaneStateDAOHibernateTest {
 
-	static AirplaneStateDAO airplaneStateDAO=null;
+	static AirplaneStateDAO sut=null;
 	static ClassPathXmlApplicationContext factoria;
 
 	@BeforeClass  
@@ -29,20 +30,24 @@ public class AirplaneStateDAOHibernateTest {
 		//DAOFactory factoriaDAO=  DAOAbstractFactory.getInstance();
 		//airplaneStateDAO = factoriaDAO.getAirplaneStateDAO();
 		factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
-		airplaneStateDAO= (AirplaneStateDAO)factoria.getBean("airplaneStateDAO");
+		sut= (AirplaneStateDAO)factoria.getBean("airplaneStateDAO");
+		System.out.println("========================================================================================================");
+		System.out.println("TEST AIRPLANESTATE (Spring)" );
+		System.out.println("========================================================================================================");
+		
 		
 	}  
 
 	@AfterClass  
 	public static void tearDownClass() throws Exception {   
-		HibernateUtil.getSessionFactory().close();  
+		//HibernateUtil.getSessionFactory().close();  
 		factoria.close();
 	} 
 	
 	@Test
 	public void findAll() throws Exception {
-
-		List<AirplaneState> listOfObj = airplaneStateDAO.findAll();
+		System.out.println("--findByAll()--->");
+		List<AirplaneState> listOfObj = sut.findAll();
 		ImprimirListado(listOfObj);  
 		assertNotNull("Account list is null.", listOfObj);
 		   
@@ -50,17 +55,18 @@ public class AirplaneStateDAOHibernateTest {
 
 	@Test
 	public void findById() throws Exception {
-		AirplaneState obj = airplaneStateDAO.findById(Long.valueOf(1));
-		System.out.println("--findById()--->"+obj);     
+		System.out.println("--findById()--->");
+		AirplaneState obj = sut.findById(Long.valueOf(1));
+		System.out.println(obj);     
 		assertEquals(Long.valueOf(1),obj.getId());
 		
 	}
 	
 	@Test
 	public void findByKey() throws Exception {
-
-		AirplaneState obj = airplaneStateDAO.findByKey(10);
-		System.out.println("--findByKey()--->"+obj);     
+		System.out.println("--findByKey()--->"); 
+		AirplaneState obj = sut.findByKey(10);
+		System.out.println(obj);     
 		assertEquals(10,obj.getCode());
 	}
 
@@ -75,32 +81,33 @@ public class AirplaneStateDAOHibernateTest {
 	@Test
 	public void crudAirplaneState() {
 		int code=99;
-		String description="Para pruebas";
+		String description="Para test";
 		AirplaneState obj= new AirplaneState();
 		obj.setCode(code);
 		obj.setDescription(description);
 
 		//Insertar
-		String id=airplaneStateDAO.insert(obj);	
-		System.out.println("--Insertar--->"+id);
-		AirplaneState objPersist = airplaneStateDAO.findById(Long.valueOf(id));
-
+		System.out.println("--Insertar--->"); 
+		String id=sut.insert(obj);	
+		AirplaneState objPersist = sut.findById(Long.valueOf(id));
+		System.out.println(objPersist);
 		assertNotNull(objPersist);
-		assertNotEquals("", id);
-		assertEquals("Código:", code,objPersist.getCode());
-		assertEquals("Descripción:", description,objPersist.getDescription());
+		assertEquals(obj, objPersist);
 		
 		//Modificar
-		String textUpdate="Para pruebas modificado";
-		objPersist.setDescription(textUpdate);		
-		airplaneStateDAO.save(objPersist);
-		objPersist = airplaneStateDAO.findById(Long.valueOf(id));
-		assertEquals("Descripción modificada:", textUpdate,objPersist.getDescription());
-		System.out.println("--Modificar--->"+objPersist.getDescription());
+		System.out.println("--Modificar--->"); 
+		String textUpdate="Para test modificado";		
+		obj.setDescription(textUpdate);
+		sut.save(obj);
+		objPersist = sut.findById(Long.valueOf(id));
+		System.out.println(objPersist);
+		assertEquals(obj,objPersist);
+		
 		//Eliminar
-		airplaneStateDAO.remove(objPersist);
-		objPersist = airplaneStateDAO.findById(Long.valueOf(id));
-		System.out.println("--Eliminar--->"+objPersist);
+		System.out.println("--Eliminar--->"); 
+		sut.remove(objPersist);
+		objPersist = sut.findById(Long.valueOf(id));
+		System.out.println(objPersist);
 		assertNull(objPersist);
 	}
 	

@@ -135,3 +135,8 @@ ALTER TABLE `airport_gates` CHANGE `Code` `Code` VARCHAR( 4 ) NOT NULL
 
 ALTER TABLE `airplane` ADD UNIQUE (`Registration`)
 ALTER TABLE `airplane` ADD `IdCompany` INT NOT NULL AFTER `IdState` 
+ALTER TABLE `airplane` CHANGE `Registration` `PlateNumber` VARCHAR( 11 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL
+ALTER TABLE `airport_aena`.`airplane` DROP INDEX `Registration` ,ADD UNIQUE `PlateNumber` ( `PlateNumber` )
+ALTER TABLE `airplane_state` ADD UNIQUE (`Code`) 
+ALTER TABLE `company` ADD UNIQUE (`LicenseCode`)
+ALTER TABLE `company` CHANGE `Id` `Id` BIGINT( 11 ) NOT NULL AUTO_INCREMENT 

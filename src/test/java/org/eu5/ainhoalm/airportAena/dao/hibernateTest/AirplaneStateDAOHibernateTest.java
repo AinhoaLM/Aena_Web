@@ -13,7 +13,6 @@ import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 //import org.eu5.ainhoalm.airportAena.dao.DAOAbstractFactory;
 //import org.eu5.ainhoalm.airportAena.dao.DAOFactory;
 import org.eu5.ainhoalm.airportAena.model.AirplaneState;
-import org.eu5.ainhoalm.airportAena.utils.HibernateUtil;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

@@ -9,14 +9,16 @@
 			<!-- para generar desde código el id autonumérico en vez de en tabla -->
 			<generator class="increment" />
 		</id>
-		<property name="registration"/>
+		<natural-id><property name="plateNumber"/></natural-id>
 		<property name="model" />	
 		<property name="msn"/>
 		<property name="nSeats"/>
-		<many-to-one name="state"  fetch="join" lazy="false">
-            <column name="idState"  />
+		<many-to-one name="state"  fetch="join" lazy="false" >
+            <column name="idState" />
     	</many-to-one>
-    	<property name="idCompany" />
+    	<many-to-one name="company"  fetch="join" lazy="false" >
+            <column name="idCompany" />
+    	</many-to-one>
 		
 	</class>
 </hibernate-mapping>

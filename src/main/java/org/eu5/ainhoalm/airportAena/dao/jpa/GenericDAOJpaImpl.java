@@ -36,7 +36,6 @@ public abstract class GenericDAOJpaImpl <T, Id extends Serializable> extends Jpa
 	@Override
 	public String insert(T object) {
 		getJpaTemplate().persist(object);
-		
 		return "";
 
 	}

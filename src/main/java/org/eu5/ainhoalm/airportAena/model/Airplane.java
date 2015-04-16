@@ -2,23 +2,25 @@ package org.eu5.ainhoalm.airportAena.model;
 
 import java.io.Serializable;
 
+
+
 public class Airplane implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	private String registration;
+	private String plateNumber;
 	private String model;
 	private String msn;
 	private int nSeats;
 	private AirplaneState state;
-	private Integer idCompany;
+	private Company company;
 	
 	public Long getId() {return id;}
 	@SuppressWarnings("unused")
 	private void setId(Long id) {this.id = id;}
 
-	public String getRegistration() {return registration;}
-	public void setRegistration(String registration) {this.registration = registration;}
+	public String getPlateNumber() {return plateNumber;}
+	public void setPlateNumber(String plateNumber) {this.plateNumber = plateNumber;}
 	
 	public String getModel() {return model;}
 	public void setModel(String model) {this.model = model;}
@@ -31,16 +33,14 @@ public class Airplane implements Serializable {
 	
 	public AirplaneState getState() {return state;}
 	public void setState(AirplaneState state) {this.state = state;}
-	
-	public Integer getIdCompany() {return idCompany;}
-	public void setIdCompany(Integer idCompany) {this.idCompany = idCompany;}
 		
-	
+	public Company getCompany() {return company;}
+	public void setCompany(Company company) {this.company = company;}
 	@Override
 	public String toString() {
-		return "Airplane [id=" + id + ", registration=" + registration
+		return "Airplane [id=" + id + ", registration=" + plateNumber
 				+ ", model=" + model + ", msn=" + msn + ", nSeats=" + nSeats
-				+ ", state=" + state + ", idCompany=" + idCompany + "]";
+				+ ", state=" + state + ", Company=" + company.getName() + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -48,7 +48,7 @@ public class Airplane implements Serializable {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result
-				+ ((registration == null) ? 0 : registration.hashCode());
+				+ ((plateNumber == null) ? 0 : plateNumber.hashCode());
 		return result;
 	}
 	@Override
@@ -65,11 +65,6 @@ public class Airplane implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (idCompany == null) {
-			if (other.idCompany != null)
-				return false;
-		} else if (!idCompany.equals(other.idCompany))
-			return false;
 		if (model == null) {
 			if (other.model != null)
 				return false;
@@ -82,16 +77,12 @@ public class Airplane implements Serializable {
 			return false;
 		if (nSeats != other.nSeats)
 			return false;
-		if (registration == null) {
-			if (other.registration != null)
+		if (plateNumber == null) {
+			if (other.plateNumber != null)
 				return false;
-		} else if (!registration.equals(other.registration))
+		} else if (!plateNumber.equals(other.plateNumber))
 			return false;
-		if (state == null) {
-			if (other.state != null)
-				return false;
-		} else if (!state.equals(other.state))
-			return false;
+		
 		return true;
 	}
 	

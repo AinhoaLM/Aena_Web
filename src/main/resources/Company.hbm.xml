@@ -4,11 +4,13 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="org.eu5.ainhoalm.airportAena.model">
-	<class name="AirplaneState" table="Airplane_state">
+	<class name="Company" table="company">
 		<id name="id" column="id">
 			<generator class="increment" />
 		</id>
-		<natural-id><property name="code" /></natural-id>
-		<property name="description" />	
+		<natural-id><property name="licenseCode" /></natural-id>
+		<property name="name" />
+		<property name="expirationDate" />
+		<property name="concessionDate" />	
 	</class>
 </hibernate-mapping>

@@ -15,5 +15,6 @@
         <mapping resource="AirplaneState.hbm.xml"/>
         <mapping resource="Airport.hbm.xml"/>
         <mapping resource="AirportGates.hbm.xml"/>
+        <mapping resource="Company.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

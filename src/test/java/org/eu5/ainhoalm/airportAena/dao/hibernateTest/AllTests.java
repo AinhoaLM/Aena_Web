@@ -9,7 +9,9 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ AirplaneStateDAOHibernateTest.class,
 				AirplaneDAOHibernateTest.class, 
-				AirportGatesDAOHibernateTest.class})
+				AirportDAOHibernateTest.class,
+				AirportGatesDAOHibernateTest.class,
+				FlightDAOHibernateTest.class})
 public class AllTests {
 	@AfterClass  
 	public static void tearDownClass() throws Exception {   

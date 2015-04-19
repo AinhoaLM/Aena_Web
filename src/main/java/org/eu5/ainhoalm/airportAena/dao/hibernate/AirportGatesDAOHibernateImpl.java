@@ -17,9 +17,9 @@ public class AirportGatesDAOHibernateImpl extends GenericDAOHibernateImpl<Airpor
 		List<AirportGates> listOfObj;
 		try{
 			session.beginTransaction();
-			Query q=session.createQuery("from AirportGates where airport.id = :pid and status = :pstatus");
+			Query q=session.createQuery("from AirportGates where airport.id = :pid and idAirplane is null");
 			q.setLong("pid", idAirport);
-			q.setBoolean("pstatus", true);
+			
 			listOfObj = q.list();       
 			session.getTransaction().commit();
 		}catch(Exception e){

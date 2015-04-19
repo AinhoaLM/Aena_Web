@@ -4,7 +4,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="org.eu5.ainhoalm.airportAena.model">
-	<class name="Airplane" table="Airplane">
+	<class name="Airplane" table="Airplane" >
 		<id name="id" column="id">
 			<!-- para generar desde código el id autonumérico en vez de en tabla -->
 			<generator class="increment" />
@@ -16,7 +16,8 @@
 		<many-to-one name="state"  fetch="join" lazy="false" >
             <column name="idState" />
     	</many-to-one>
-    	<many-to-one name="company"  fetch="join" lazy="false" >
+    	<many-to-one name="company"  fetch="join"  lazy="false"
+    		class="org.eu5.ainhoalm.airportAena.model.Company" >
             <column name="idCompany" />
     	</many-to-one>
 		

@@ -1,12 +1,8 @@
 package org.eu5.ainhoalm.airportAena.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
-
-import org.eu5.ainhoalm.airportAena.model.annotation.Company;
-
-
 
 
 public class Airport implements Serializable{
@@ -17,8 +13,14 @@ public class Airport implements Serializable{
 	private String icao;
 	private String description;
 	private Integer nGates;
-	private List<AirportGates> gates;
+	private Set<AirportGates> gates;
+	private String country;
 	
+	
+	
+	public Airport() {
+		this.gates= new HashSet<AirportGates>();
+	}
 	
 	public Long getId() {return id;}
 	@SuppressWarnings("unused")
@@ -33,20 +35,40 @@ public class Airport implements Serializable{
 	public Integer getnGates() {return nGates;}
 	public void setnGates(Integer nGates) {this.nGates = nGates;}
 	
-	protected List<AirportGates> getGates() {return gates;}
-	protected void setGates(List<AirportGates> gates) {this.gates = gates;}
+	protected Set<AirportGates> getGates() {return gates;}
+	protected void setGates(Set<AirportGates> gates) {this.gates = gates;}
 	
-
+	public void addToGates(AirportGates gates) {
+		if (gates != null) {
+			this.gates.add(gates);
+			gates.setAirport(this);
+		}
+	}
+	
+	public void removeFromGates(AirportGates gates) {
+		if (gates != null) {
+			this.gates.remove(gates);
+			gates.setAirport(null);
+		}
+	}
+	
+	public Set<AirportGates> obtainGates() {return gates;}
+	
+	public String getCountry() {return country;}
+	public void setCountry(String country) {this.country = country;}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Airport [id=" + id + ", icao=" + icao + ", description="
-				+ description + ", nGates=" + nGates + ", gates=" + gates + "]";
+				+ description + ", nGates=" + nGates + ", gates=" + gates
+				+ ", country=" + country + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((icao == null) ? 0 : icao.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -59,33 +81,18 @@ public class Airport implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Airport other = (Airport) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (gates == null) {
-			if (other.gates != null)
-				return false;
-		} else if (!gates.equals(other.gates))
-			return false;
 		if (icao == null) {
 			if (other.icao != null)
 				return false;
 		} else if (!icao.equals(other.icao))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (nGates == null) {
-			if (other.nGates != null)
-				return false;
-		} else if (!nGates.equals(other.nGates))
-			return false;
 		return true;
 	}
+	
+	
+	
+	
+	
 	
 	
 	

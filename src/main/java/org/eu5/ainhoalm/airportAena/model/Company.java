@@ -55,8 +55,6 @@ public class Company implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((licenseCode == null) ? 0 : licenseCode.hashCode());
 		return result;
 	}
 	@Override
@@ -68,11 +66,6 @@ public class Company implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Company other = (Company) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
 		if (licenseCode == null) {
 			if (other.licenseCode != null)
 				return false;

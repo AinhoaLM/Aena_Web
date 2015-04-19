@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+ <class name="org.eu5.ainhoalm.airportAena.model.Passenger" table="passenger">
+       <id name="id" column="id">
+			<!-- para generar desde código el id autonumérico en vez de en tabla -->
+			<generator class="increment" />
+		</id>
+        <property name="dni" />
+        <property name="name" />
+        <property name="firstName" />
+        <property name="birthDay" />
+        <property name="type" />
+           
+    </class>
+
+</hibernate-mapping>

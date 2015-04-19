@@ -21,7 +21,8 @@ public class AirplaneDAOHibernateTest {
 	
 	static AirplaneDAO sut;
 	static AirplaneStateDAO state;
-	static CompanyDAO company;	
+	static CompanyDAO company;
+
 	String id;
 	String plateNumber="AAA";
 	String msn ="111";
@@ -36,6 +37,7 @@ public class AirplaneDAOHibernateTest {
 		sut = new AirplaneDAOHibernateImpl(); 
 		state= new AirplaneStateDAOHibernateImpl();
 		company= new CompanyDAOHibernateImpl();
+
 		System.out.println("========================================================================================================");
 		System.out.println("TEST AIRPLANE" );
 		System.out.println("========================================================================================================");
@@ -138,7 +140,6 @@ public class AirplaneDAOHibernateTest {
 	
 	private void ImprimirListado(List<Airplane> lista)
 	 {
-	  System.out.println("Listado");
 	  for (Object item : lista) {
 	         System.out.println(item);   
 	        }

@@ -9,6 +9,7 @@ public class AirportGates implements Serializable{
 	private String code;
 	private Boolean status;
 	private Airport airport;
+	private Long idAirplane;
 	
 	public Long getId() {return id;}
 	@SuppressWarnings("unused")
@@ -23,19 +24,32 @@ public class AirportGates implements Serializable{
 	protected Airport getAirport() {return airport;}
 	protected void setAirport(Airport aiport) {this.airport = aiport;}
 	
+	public Long getIdAirplane() {return idAirplane;}
+	public void setIdAirplane(Long idAirplane) {this.idAirplane = idAirplane;}
 	
+	public void addToAirport(Airport airport) {
+		if (airport != null) {
+			this.setAirport(airport);
+			airport.getGates().add(this);
+		}
+	}
+	
+	public void removeFromAirport(Airport airport) {
+		if (airport != null) {
+			this.setAirport(null);
+			airport.getGates().remove(airport);
+		}
+	}
 	
 	@Override
 	public String toString() {
 		return "AirportGates [id=" + id + ", code=" + code + ", status="
-				+ status + ", airport=" + airport.getDescription() + "]";
+				+ status + ", airport=" + airport.getDescription() + "airplane=" + idAirplane+"]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((airport == null) ? 0 : airport.hashCode());
-		result = prime * result + ((code == null) ? 0 : code.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -58,11 +72,6 @@ public class AirportGates implements Serializable{
 			if (other.code != null)
 				return false;
 		} else if (!code.equals(other.code))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

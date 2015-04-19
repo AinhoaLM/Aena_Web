@@ -140,3 +140,107 @@ ALTER TABLE `airport_aena`.`airplane` DROP INDEX `Registration` ,ADD UNIQUE `Pla
 ALTER TABLE `airplane_state` ADD UNIQUE (`Code`) 
 ALTER TABLE `company` ADD UNIQUE (`LicenseCode`)
 ALTER TABLE `company` CHANGE `Id` `Id` BIGINT( 11 ) NOT NULL AUTO_INCREMENT 
+ALTER TABLE `company` CHANGE `LicenseCode` `LicenseCode` VARCHAR( 15 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL 
+ALTER TABLE `airplane` CHANGE `IdState` `IdState` INT( 11 ) NOT NULL 
+ALTER TABLE `airport` ADD `Country` VARCHAR( 50 ) NOT NULL AFTER `NGates` 
+ALTER TABLE `airport` ADD UNIQUE (`Icao`)
+
+UPDATE `airport_aena`.`airport` SET `Country` = 'España' WHERE `airport`.`Id` =1;
+UPDATE `airport_aena`.`airport` SET `Country` = 'España' WHERE `airport`.`Id` =2;
+UPDATE `airport_aena`.`airport` SET `Country` = 'España' WHERE `airport`.`Id` =3;
+UPDATE `airport_aena`.`airport` SET `Country` = 'España' WHERE `airport`.`Id` =4;
+UPDATE `airport_aena`.`airport` SET `Country` = 'España' WHERE `airport`.`Id` =5;
+ALTER TABLE `airport_gates` ADD UNIQUE (`Code` ,`IdAirport`);
+ALTER TABLE `airplane` ADD INDEX ( `IdCompany` ) 
+ALTER TABLE `airplane` ADD FOREIGN KEY ( `IdCompany` ) REFERENCES `airport_aena`.`company` (`Id`) 
+ON DELETE RESTRICT ON UPDATE RESTRICT ;
+
+ALTER TABLE `airport_gates` DROP `Status` ;
+ALTER TABLE `airport_gates` ADD `IdAirplane` INT NULL AFTER `IdAirport` 
+ALTER TABLE `airport_gates` ADD INDEX ( `IdAirport` ) 
+ALTER TABLE `airport_gates` ADD FOREIGN KEY ( `IdAirport` ) REFERENCES `airport_aena`.`airport` (`Id`) ON DELETE RESTRICT ON UPDATE RESTRICT ;
+
+
+--
+-- Estructura de tabla para la tabla `boardingpass`
+--
+
+CREATE TABLE IF NOT EXISTS `boardingpass` (
+  `Id` int(11) NOT NULL,
+  `Code` varchar(10) NOT NULL,
+  `Seat` int(11) NOT NULL,
+  `Boarded` tinyint(1) NOT NULL,
+  `IdFlight` int(11) NOT NULL,
+  `DNI` varchar(10) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `FirstName` varchar(100) DEFAULT NULL,
+  `Birthday` date DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Code` (`Code`),
+  UNIQUE KEY `Code_2` (`Code`,`DNI`),
+  KEY `IdFlight` (`IdFlight`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `boardingpass`
+--
+
+INSERT INTO `boardingpass` (`Id`, `Code`, `Seat`, `Boarded`, `IdFlight`, `DNI`, `Name`, `FirstName`, `Birthday`) VALUES
+(1, 'T001', 1, 1, 1, '11111111A', 'Pasajero 1', NULL, NULL),
+(2, 'T002', 2, 1, 1, '22222222A', 'Pasajero 2', NULL, NULL),
+(3, 'T003', 3, 0, 1, '33333333A', 'Pasjero 3 que no embarca', NULL, NULL),
+(4, 'T004', 4, 1, 1, '44444444A', 'Pasajero 4', NULL, NULL);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `boardingpass`
+--
+ALTER TABLE `boardingpass`
+  ADD CONSTRAINT `boardingpass_ibfk_1` FOREIGN KEY (`IdFlight`) REFERENCES `flight` (`Id`);
+--
+-- Estructura de tabla para la tabla `flight`
+--
+
+CREATE TABLE IF NOT EXISTS `flight` (
+  `Id` int(11) NOT NULL,
+  `IdAirportO` int(11) NOT NULL,
+  `IdAirportD` int(11) DEFAULT NULL,
+  `IdAirplane` int(11) NOT NULL,
+  `IdCompany` int(11) NOT NULL,
+  `Date` date NOT NULL,
+  `DepartureTime` datetime NOT NULL,
+  `ArrivalTime` datetime NOT NULL,
+  `Code` varchar(10) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `IdAirportO` (`IdAirportO`),
+  KEY `IdAirportD` (`IdAirportD`),
+  KEY `IdAirplane` (`IdAirplane`),
+  KEY `IdCompany` (`IdCompany`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `flight`
+--
+
+INSERT INTO `flight` (`Id`, `IdAirportO`, `IdAirportD`, `IdAirplane`, `IdCompany`, `Date`, `DepartureTime`, `ArrivalTime`, `Code`) VALUES
+(1, 1, 5, 1, 1, '2015-04-19', '2015-04-19 10:00:00', '2015-04-19 13:00:00', 'V001'),
+(2, 1, NULL, 2, 2, '2015-04-19', '2015-04-19 15:00:00', '2015-04-19 18:00:00', 'V002');
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `flight`
+--
+ALTER TABLE `flight`
+  ADD CONSTRAINT `flight_ibfk_1` FOREIGN KEY (`IdAirportO`) REFERENCES `airport` (`Id`),
+  ADD CONSTRAINT `flight_ibfk_3` FOREIGN KEY (`IdAirportD`) REFERENCES `airport` (`Id`),
+  ADD CONSTRAINT `flight_ibfk_5` FOREIGN KEY (`IdAirplane`) REFERENCES `airplane` (`Id`),
+  ADD CONSTRAINT `flight_ibfk_6` FOREIGN KEY (`IdCompany`) REFERENCES `company` (`Id`);
+
+
+

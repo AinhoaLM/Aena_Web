@@ -4,7 +4,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="org.eu5.ainhoalm.airportAena.model">
-	<class name="Airport" table="airport">
+	<class name="Airport" table="airport" >
 		<id name="id" column="id">
 			<!-- para generar desde código el id autonumérico en vez de en la tabla -->
 			<generator class="increment" />
@@ -12,19 +12,22 @@
 		<property name="icao" />
 		<property name="description" />
 		<property name="nGates" />
-		<!-- <set name="gates" table="gate" lazy="false"> -->
-		<!-- <key> -->
-		<!-- <column name="idAirport" not-null="true"></column> -->
-		<!-- </key> -->
-		<!-- <one-to-many class="Gate"/> -->
-		<!-- </set> -->
-		<bag name="gates" inverse="true" table="airport_gates" lazy="false" fetch="select">
+<!-- 		<bag name="gates" inverse="true" table="airport_gates"  -->
+<!-- 			lazy="false" fetch="select" cascade="all" > -->
+<!-- 			<key> -->
+<!-- 				<column name="IdAirport" not-null="true"/> -->
+<!-- 			</key> -->
+<!-- 			<list-index></list-index> --> 
+<!-- 			<one-to-many class="org.eu5.ainhoalm.airportAena.model.AirportGates" /> -->
+<!-- 		</bag> -->
+		<set name="gates"  table="airport_gates" fetch="join" order-by="code" 
+			inverse="true" lazy="false" cascade="all" > 
 			<key>
-				<column name="IdAirport" not-null="true"/>
+				<column name="IdAirport" not-null="true" ></column>
 			</key>
-<!-- 			<list-index></list-index> -->
 			<one-to-many class="org.eu5.ainhoalm.airportAena.model.AirportGates" />
-		</bag>
+		</set>
+		<property name="country"></property>
 		
 	</class>
 </hibernate-mapping>

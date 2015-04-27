@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="../templates/starter/main.xhtml">
+	<ui:define name="content_title">
+		<h1>Estado de Aviones</h1>
+	</ui:define>
+	<ui:define name="content_button1">
+		<h:form id="formAdd" styleClass="form-inline">
+			<h:commandLink id="btnAdd" styleClass="btn btn-default btn-lg"
+				action="#{formAirplaneState.moveToAddAction}">
+				<span class="glyphicon glyphicon-star"></span> Añadir
+			</h:commandLink>
+		</h:form>
+	</ui:define>
+	<ui:define name="content_button2">
+		<h:form id="formSearch">
+			<h:commandButton value="Buscar"></h:commandButton>
+		</h:form>
+	</ui:define>
+	<ui:define name="content_data">
+	<h:form id="formEditDelete">
+		<h:dataTable value="#{formAirplaneState.listOfAriplaneState}"
+			var="state" styleClass="table">
+			<h:column>
+				<!-- column header -->
+				<f:facet name="header">Código</f:facet>
+				#{state.code}
+				<!-- row record -->
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Descripción</f:facet>
+				#{state.description}
+			</h:column>
+			<h:column>
+				<h:commandLink action="#{formAirplaneState.moveToDeleteAction(state)}" value="borrar" />
+			</h:column>
+			
+<!-- 			<h:column> -->
+<!-- 			<h:commandLink value="editar" action="FormularioEditarLibro"> -->
+
+<!-- 			</h:commandLink> -->
+<!-- 			<h:commandLink id="eliminarOdd" value="eliminar" action="#{person.moveToDeleteAction(p)}"> -->
+<!-- 			</h:column> -->
+		</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

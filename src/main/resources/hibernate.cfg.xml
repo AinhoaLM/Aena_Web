@@ -10,8 +10,8 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="hibernate.show_sql">true</property>
+<!--         <property name="hibernate.current_session_context_class">thread</property> -->
         <property name="hibernate.current_session_context_class">thread</property>
-        
         <mapping resource="Airplane.hbm.xml"/>
         <mapping resource="AirplaneState.hbm.xml"/>
         <mapping resource="Airport.hbm.xml"/>

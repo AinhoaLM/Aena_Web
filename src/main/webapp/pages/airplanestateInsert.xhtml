@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="../templates/starter/main.xhtml">
+	<ui:define name="content_title">
+		<h1>Añadir Estado de Aviones</h1>
+	</ui:define>
+
+	<ui:define name="content_data">
+		<h:form id="formAdd">
+		<h:outputLabel for="code" value="*Introduce el código: " title="Código" />
+		<h:inputText id="code" value="#{formAirplaneState.code}"
+			title="Código" tabindex="1" required="true"
+			requiredMessage="es obligatorio introducir el código" />
+		<h:message id="m1" for="code" style="color:red" />
+		<h:outputLabel for="descripcion" value="Introduce la descripción: " title="Descripción" />		
+		<h:inputText id="descripcion" value="#{formAirplaneState.description}"
+			title="Descripción" tabindex="1" />
+		<h:commandButton value="Añadir" action="#{formAirplaneState.insert()}"></h:commandButton>
+	
+
+	</h:form>
+	</ui:define>
+</ui:composition>
+</html>

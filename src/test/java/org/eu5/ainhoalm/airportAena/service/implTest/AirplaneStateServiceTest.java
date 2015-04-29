@@ -13,13 +13,14 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+//import org.springframework.web.context.WebApplicationContext;
 
 public class AirplaneStateServiceTest {
 	
 	static AirplaneStateService service=null;
 	static AirplaneStateDAO dao= null;
 	static private ClassPathXmlApplicationContext factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
-	
+	//static private WebApplicationContext fac;
 
 	@BeforeClass  
 	public static void setUpClass() throws Exception {   

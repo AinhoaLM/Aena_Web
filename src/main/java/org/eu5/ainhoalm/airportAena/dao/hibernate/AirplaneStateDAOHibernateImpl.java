@@ -14,9 +14,8 @@ public class AirplaneStateDAOHibernateImpl extends GenericDAOHibernateImpl<Airpl
 	@Override
 	public AirplaneState findByKey(int code) {
 		List<AirplaneState> listOfObj=null;
-		Session session= HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session= getSessionFactory().getCurrentSession();
 		try{
-
 			session.beginTransaction();
 			Query q = session.createQuery("from AirplaneState  where code = :pcode");
 			q.setInteger("pcode", code);
@@ -26,7 +25,7 @@ public class AirplaneStateDAOHibernateImpl extends GenericDAOHibernateImpl<Airpl
 			session.getTransaction().rollback();
 			throw e;
 		}finally{
-			HibernateUtil.getSessionFactory().getCurrentSession().close();
+			getSessionFactory().getCurrentSession().close();
 		}
 		return (AirplaneState)listOfObj.get(0);
 	}

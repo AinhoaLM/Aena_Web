@@ -3,26 +3,32 @@ package org.eu5.ainhoalm.airportAena.dao.hibernate;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+
 import org.eu5.ainhoalm.airportAena.dao.GenericDAO;
 import org.eu5.ainhoalm.airportAena.utils.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> implements GenericDAO<T,Id> {
 
 	private Class<T> claseDePersistencia;
-	//Session session=HibernateHelper.getSessionFactory().openSession();
-	//session= HibernateHelper.getSessionFactory().getCurrentSession();
+	private SessionFactory sessionFactory;
 	
 	@SuppressWarnings("unchecked")
 	public GenericDAOHibernateImpl() {
 		this.claseDePersistencia = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-		}
+	}
 	
-	
+	public SessionFactory getSessionFactory() {return sessionFactory;}
+	public void setSessionFactory(SessionFactory sessionFactory) {this.sessionFactory = sessionFactory;}
+
+
+
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public T findById(Id id) {
-		Session session= HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session= sessionFactory.getCurrentSession();
 		T object=null;
 		try{
 			session.beginTransaction();
@@ -33,7 +39,7 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 			session.getTransaction().rollback();
 			throw e;
 		}finally{
-			HibernateUtil.getSessionFactory().getCurrentSession().close();
+			getSessionFactory().getCurrentSession().close();
 		}
 		
 		
@@ -43,18 +49,18 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll() {
-		Session session= HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session= sessionFactory.getCurrentSession();
 		List<T> listOfObject=null;
 		try{
 			session.beginTransaction();
-			listOfObject = session.createQuery(" from "+claseDePersistencia.getSimpleName()).list(); 
+			listOfObject = session.createQuery(" from "+claseDePersistencia.getSimpleName()).list();
 			session.getTransaction().commit();
 			return listOfObject;
 		}catch(Exception e){
 			session.getTransaction().rollback();
 			throw e;
 		}finally{
-			HibernateUtil.getSessionFactory().getCurrentSession().close();
+			getSessionFactory().getCurrentSession().close();
 		}
 		
 	}
@@ -62,7 +68,7 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 
 	@Override
 	public String insert(T object) {
-		Session session= HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session= sessionFactory.getCurrentSession();
 		String id;
 		try{
 			session.beginTransaction();
@@ -73,7 +79,7 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 			session.getTransaction().rollback();
 			throw e;
 		}finally{
-			HibernateUtil.getSessionFactory().getCurrentSession().close();
+			getSessionFactory().getCurrentSession().close();
 		}
 		
 		
@@ -82,7 +88,7 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 
 	@Override
 	public void save(T object) {
-		Session session= HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session= sessionFactory.getCurrentSession();
 		try{
 			session.beginTransaction();
 			session.update(object);
@@ -91,14 +97,14 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 			session.getTransaction().rollback();
 			throw e;
 		}finally{
-			HibernateUtil.getSessionFactory().getCurrentSession().close();
+			getSessionFactory().getCurrentSession().close();
 		}
 	}
 
 
 	@Override
 	public void remove(T object) {
-		Session session= HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session= sessionFactory.getCurrentSession();
 		try{
 			session.beginTransaction();
 			session.delete(object);
@@ -107,7 +113,7 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 			session.getTransaction().rollback();
 			throw e;
 		}finally{
-			HibernateUtil.getSessionFactory().getCurrentSession().close();
+			getSessionFactory().getCurrentSession().close();
 		}
 	}
 	

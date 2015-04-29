@@ -15,8 +15,7 @@
 		<property name="username" value="root" />
 	</bean>
 	
-	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />  
-	
+	<!--  PARA JPA -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="persistenceUnit" />
@@ -26,10 +25,18 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory">
 		</property>
 	</bean>
-
+	<!--  FIN PARA JPA -->
+	
+	<!-- PARA HIBERNATE  -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+       <property name="configLocation" value="classpath:hibernate.cfg.xml"/>    
+    </bean>
+	
+	<!-- FIN PARA HIBERNATE  -->
 
 	<bean id="airplaneStateDAO"
 		class="org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneStateDAOHibernateImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="airplaneDAO"
 		class="org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneDAOHibernateImpl">

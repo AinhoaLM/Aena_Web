@@ -12,13 +12,13 @@
         <property name="hibernate.show_sql">true</property>
 <!--         <property name="hibernate.current_session_context_class">thread</property> -->
         <property name="hibernate.current_session_context_class">thread</property>
-        <mapping resource="Airplane.hbm.xml"/>
-        <mapping resource="AirplaneState.hbm.xml"/>
-        <mapping resource="Airport.hbm.xml"/>
-        <mapping resource="AirportGates.hbm.xml"/>
-        <mapping resource="Company.hbm.xml"/>
-        <mapping resource="Flight.hbm.xml"/>
-        <mapping resource="BoardingPass.hbm.xml"/>
+        <mapping resource="hibernate/Airplane.hbm.xml"/>
+        <mapping resource="hibernate/AirplaneState.hbm.xml"/>
+        <mapping resource="hibernate/Airport.hbm.xml"/>
+        <mapping resource="hibernate/AirportGates.hbm.xml"/>
+        <mapping resource="hibernate/Company.hbm.xml"/>
+        <mapping resource="hibernate/Flight.hbm.xml"/>
+        <mapping resource="hibernate/BoardingPass.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
 

@@ -7,47 +7,55 @@ import java.util.List;
 
 
 
+import javax.persistence.EntityManagerFactory;
 import org.eu5.ainhoalm.airportAena.dao.GenericDAO;
-import org.springframework.orm.jpa.support.JpaDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
-@SuppressWarnings("deprecation")
-public abstract class GenericDAOJpaImpl <T, Id extends Serializable> extends JpaDaoSupport implements GenericDAO<T,Id> {
+
+public abstract class GenericDAOJpaImpl <T, Id extends Serializable>  implements GenericDAO<T,Id> {
 	
 	private Class<T> typeClass;
-
+	private EntityManagerFactory entityManagerFactory;
+	
 	
 	@SuppressWarnings("unchecked")
 	public GenericDAOJpaImpl() {
 		this.typeClass = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 	
+	
+	public EntityManagerFactory getEntityManagerFactory() {return entityManagerFactory;}
+	public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {this.entityManagerFactory = entityManagerFactory;}
+
+
 	@Override
+	@Transactional
 	public T findById(Id id) {	
-		return getJpaTemplate().find(typeClass, id);
+		return entityManagerFactory.createEntityManager().find(typeClass, id);
 
 	}
 
 	@SuppressWarnings({ "unchecked" })
 	@Override
 	public List<T> findAll() {		
-		return getJpaTemplate().find("select o from "+ typeClass.getSimpleName() + " o");
+		return entityManagerFactory.createEntityManager().createQuery("select o from "+ typeClass.getSimpleName() + " o").getResultList();
 	}
 
 	@Override
 	public String insert(T object) {
-		getJpaTemplate().persist(object);
+		entityManagerFactory.createEntityManager().persist(object);
 		return "";
 
 	}
 
 	@Override
 	public void save(T object) {
-		getJpaTemplate().merge(object);
+		entityManagerFactory.createEntityManager().merge(object);
 	}
 
 	@Override
 	public void remove(T object) {
-		getJpaTemplate().remove(getJpaTemplate().merge(object));
+		entityManagerFactory.createEntityManager().remove(object);
 		
 	}
 

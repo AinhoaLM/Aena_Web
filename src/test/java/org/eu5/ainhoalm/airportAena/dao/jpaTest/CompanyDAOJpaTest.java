@@ -1,12 +1,12 @@
 package org.eu5.ainhoalm.airportAena.dao.jpaTest;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
+
+import java.util.Date;
 import java.util.List;
 
 import org.eu5.ainhoalm.airportAena.dao.jpa.CompanyDAO;
 import org.eu5.ainhoalm.airportAena.model.annotation.Company;
-import org.eu5.ainhoalm.airportAena.utils.JPAUtil;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class CompanyDAOJpaTest   {
 	static CompanyDAO sut=null;
-	static ClassPathXmlApplicationContext factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
+	static ClassPathXmlApplicationContext factoria ;
 
 	
 	@BeforeClass  
@@ -23,15 +23,16 @@ public class CompanyDAOJpaTest   {
 		System.out.println("========================================================================================================");
 		System.out.println("TEST COMPANY (Spring-JPA)" );
 		System.out.println("========================================================================================================");
+		factoria=new ClassPathXmlApplicationContext("aplicationContext.xml");
 		sut= (CompanyDAO)factoria.getBean("companyDAO");	
+		
 	}  
-
+	
 	@AfterClass  
 	public static void tearDownClass() throws Exception {   
-		JPAUtil.getJPAFactory().close();;  
-		//factoria.close();
+		factoria.close();
 	} 
-	
+
 	@Test
 	public void findAll() throws Exception {
 		System.out.println("--findByAll()--->");

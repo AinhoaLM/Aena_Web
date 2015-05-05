@@ -31,7 +31,7 @@ public class AirplaneStateServiceTest {
 	
 	@AfterClass  
 	public static void tearDownClass() throws Exception {   
-		HibernateUtil.getSessionFactory().close();
+		//HibernateUtil.getSessionFactory().close();
 		factoria.close();
 	} 
 	

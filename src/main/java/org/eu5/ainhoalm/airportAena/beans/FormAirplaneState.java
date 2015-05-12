@@ -44,11 +44,14 @@ public class FormAirplaneState implements Serializable {
 		this.listOfAriplaneState = listOfAriplaneState;
 	}
 	
+	//Método a ejecutar una vez iniciado el ManageBean
 	@PostConstruct
 	public void iniciar() {
 	listOfAriplaneState = getServiceAirplaneSate().findAllAirplaneState();
 	}
 	
+	//Método que carga todos los beans a nivel de framework Spring y 
+	//ponerlos a disposición de JSF
 	public AirplaneStateService getServiceAirplaneSate() {
 		ApplicationContext contexto = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		return (AirplaneStateService) contexto.getBean("airplaneStateSERVICE");

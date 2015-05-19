@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.eu5.ainhoalm.airportAena.dao.GenericDAO;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> implements GenericDAO<T,Id> {
@@ -19,6 +20,7 @@ public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> imple
 	}
 	
 	public SessionFactory getSessionFactory() {return sessionFactory;}
+	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {this.sessionFactory = sessionFactory;}
 
 

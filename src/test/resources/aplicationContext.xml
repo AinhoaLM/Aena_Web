@@ -12,9 +12,11 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/aop 
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
-
-	<!-- <context:property-placeholder location="classpath*:META-INF/spring/*.properties" 
-		/> -->
+		
+	<!-- Para usar en DAO anotaciones @PersistenciContext y @Autowired etc..
+	para utilizar en este fichero COC y hacerlo mas corto -->
+	<!-- registers all Spring standard post-processors for annotation-based configuration, including CommonAnnotationBeanPostProcessor and so on. -->
+	<context:annotation-config />
 	<!-- PARA POOL DE CONEXIONES -->
 	<bean class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" id="dataSource">
@@ -33,11 +35,9 @@
 	</bean>
 <!-- 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/> -->
 	<bean id="companyDAO" class="org.eu5.ainhoalm.airportAena.dao.jpa.CompanyDAOJpaImpl">
-		<property name="entityManagerFactory" ref="entityManagerFactory"/>
-		
+		<!--  Reemplazado por la anotación @PersistenceUnit -->
+<!-- 		<property name="entityManagerFactory" ref="entityManagerFactory"/> -->	
 	</bean>
-	
-<!-- 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" /> -->
 	<!--  FIN PARA JPA -->
 
 	<!-- PARA HIBERNATE -->
@@ -54,13 +54,11 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-<!-- 	<bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManagerJpa"> -->
-<!--         <property name="entityManagerFactory" ref="entityManagerFactory"/> -->
-<!--     </bean> -->
 
 	<bean id="airplaneStateDAO"
 		class="org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneStateDAOHibernateImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
+<!-- Reemplazado por anotación @Autowired -->
+<!-- 		<property name="sessionFactory" ref="sessionFactory" /> -->
 	</bean>
 	<bean id="airplaneDAO"
 		class="org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneDAOHibernateImpl">
@@ -68,6 +66,7 @@
 
 	<bean id="airplaneStateSERVICE"
 		class="org.eu5.ainhoalm.airportAena.service.impl.AirplaneStateServiceImpl">
+
 		<property name="airplaneStateDAO" ref="airplaneStateDAO">
 		</property>
 	</bean>

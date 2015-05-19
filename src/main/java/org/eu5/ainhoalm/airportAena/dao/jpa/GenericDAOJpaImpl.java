@@ -7,7 +7,11 @@ import java.util.List;
 
 
 
+
+
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+
 import org.eu5.ainhoalm.airportAena.dao.GenericDAO;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public abstract class GenericDAOJpaImpl <T, Id extends Serializable>  implements GenericDAO<T,Id> {
 	
 	private Class<T> typeClass;
+	
 	private EntityManagerFactory entityManagerFactory;
 	
 	
@@ -25,6 +30,7 @@ public abstract class GenericDAOJpaImpl <T, Id extends Serializable>  implements
 	
 	
 	public EntityManagerFactory getEntityManagerFactory() {return entityManagerFactory;}
+	@PersistenceUnit
 	public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {this.entityManagerFactory = entityManagerFactory;}
 
 

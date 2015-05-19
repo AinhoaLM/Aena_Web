@@ -5,8 +5,10 @@ import java.util.List;
 
 
 
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -24,6 +26,18 @@ public class FormAirplaneState implements Serializable {
 	private int code;
 	private String description;
 	private List<AirplaneState> listOfAriplaneState;
+	
+	//Inyectar el servicio Spring con anotación
+	@ManagedProperty("#{airplaneStateSERVICE}")
+	private AirplaneStateService airplaneStateService;
+	
+
+	public AirplaneStateService getAirplaneStateService() {
+		return airplaneStateService;
+	}
+	public void setAirplaneStateService(AirplaneStateService airplaneStateService) {
+		this.airplaneStateService = airplaneStateService;
+	}
 	
 	public int getCode() {
 		return code;
@@ -47,15 +61,9 @@ public class FormAirplaneState implements Serializable {
 	//Método a ejecutar una vez iniciado el ManageBean
 	@PostConstruct
 	public void iniciar() {
-	listOfAriplaneState = getServiceAirplaneSate().findAllAirplaneState();
+	listOfAriplaneState = airplaneStateService.findAllAirplaneState();
 	}
 	
-	//Método que carga todos los beans a nivel de framework Spring y 
-	//ponerlos a disposición de JSF
-	public AirplaneStateService getServiceAirplaneSate() {
-		ApplicationContext contexto = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
-		return (AirplaneStateService) contexto.getBean("airplaneStateSERVICE");
-		}
 	
 	public String moveToAddAction() {	
 		this.code=0;
@@ -67,20 +75,20 @@ public class FormAirplaneState implements Serializable {
 		AirplaneState as= new AirplaneState();
 		as.setCode(code);
 		as.setDescription(description);
-		getServiceAirplaneSate().airplaneStateSave(as);
-		setListOfAriplaneState(getServiceAirplaneSate().findAllAirplaneState());
+		airplaneStateService.airplaneStateSave(as);
+		setListOfAriplaneState(airplaneStateService.findAllAirplaneState());
 		return "airplanestateShow";
 	}
 	
 	public void moveToDeleteAction(AirplaneState airplaneState){
-		getServiceAirplaneSate().airplaneStateDelete(airplaneState);
-		setListOfAriplaneState(getServiceAirplaneSate().findAllAirplaneState());
+		airplaneStateService.airplaneStateDelete(airplaneState);
+		setListOfAriplaneState(airplaneStateService.findAllAirplaneState());
 		
 	}
 	
 	public void moveToEditAction(AirplaneState airplaneState){
-		getServiceAirplaneSate().airplaneStateDelete(airplaneState);
-		setListOfAriplaneState(getServiceAirplaneSate().findAllAirplaneState());
+		airplaneStateService.airplaneStateDelete(airplaneState);
+		setListOfAriplaneState(airplaneStateService.findAllAirplaneState());
 		
 	}
 

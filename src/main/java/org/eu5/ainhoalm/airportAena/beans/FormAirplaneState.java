@@ -6,16 +6,21 @@ import java.util.List;
 
 
 
+
+
+
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
+
+
+
 
 import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 import org.eu5.ainhoalm.airportAena.service.AirplaneStateService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.jsf.FacesContextUtils;
+
 
 
 @ManagedBean

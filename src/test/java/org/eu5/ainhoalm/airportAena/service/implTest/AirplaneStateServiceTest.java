@@ -8,7 +8,6 @@ import java.util.List;
 import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 import org.eu5.ainhoalm.airportAena.service.AirplaneStateService;
-import org.eu5.ainhoalm.airportAena.utils.HibernateUtil;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

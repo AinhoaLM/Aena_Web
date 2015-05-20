@@ -7,22 +7,21 @@ import java.util.List;
 import org.eu5.ainhoalm.airportAena.dao.AirplaneDAO;
 import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 import org.eu5.ainhoalm.airportAena.dao.CompanyDAO;
-import org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneDAOHibernateImpl;
-import org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneStateDAOHibernateImpl;
-import org.eu5.ainhoalm.airportAena.dao.hibernate.CompanyDAOHibernateImpl;
 import org.eu5.ainhoalm.airportAena.model.Airplane;
 import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 import org.eu5.ainhoalm.airportAena.model.Company;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AirplaneDAOHibernateTest {
 	
 	static AirplaneDAO sut;
 	static AirplaneStateDAO state;
 	static CompanyDAO company;
-
+	static ClassPathXmlApplicationContext factoria;
+	
 	String id;
 	String plateNumber="AAA";
 	String msn ="111";
@@ -34,12 +33,13 @@ public class AirplaneDAOHibernateTest {
 
 	@BeforeClass  
 	public static void setUpClass() throws Exception {   
-		sut = new AirplaneDAOHibernateImpl(); 
-		state= new AirplaneStateDAOHibernateImpl();
-		company= new CompanyDAOHibernateImpl();
+		factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
+		sut= (AirplaneDAO)factoria.getBean("airplaneDAO");
+		state= (AirplaneStateDAO)factoria.getBean("airplaneStateDAO");
+		company= (CompanyDAO)factoria.getBean("companyDAOHibernate");
 
 		System.out.println("========================================================================================================");
-		System.out.println("TEST AIRPLANE" );
+		System.out.println("TEST AIRPLANE (Spring)" );
 		System.out.println("========================================================================================================");
 	}  
 

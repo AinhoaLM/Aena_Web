@@ -11,6 +11,7 @@ import org.eu5.ainhoalm.airportAena.model.AirportGates;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AirportDAOHibernateTest {
 	
@@ -19,14 +20,15 @@ public class AirportDAOHibernateTest {
 	String description="Airport Test";
 	Integer nGates=3;
 	String country="España";
-	
+	static ClassPathXmlApplicationContext factoria;
 
 	@BeforeClass  
 	public static void setUpClass() throws Exception {   
 		sut = new AirportDAOHibernateImpl(); 
-
+		factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
+		sut= (AirportDAO)factoria.getBean("airportDAO");
 		System.out.println("========================================================================================================");
-		System.out.println("TEST AIRPORT" );
+		System.out.println("TEST AIRPORT (Spring)" );
 		System.out.println("========================================================================================================");
 	}  
 

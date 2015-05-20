@@ -7,8 +7,10 @@ import java.util.List;
 import org.eu5.ainhoalm.airportAena.dao.GenericDAO;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+@Repository
 public abstract class GenericDAOHibernateImpl <T, Id extends Serializable> implements GenericDAO<T,Id> {
 
 	private Class<T> claseDePersistencia;

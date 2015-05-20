@@ -1,11 +1,20 @@
 <?xml version="1.0"?>
 <faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
         http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-    version="2.2">
-    <application>
-        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
-    </application>
-   
+	version="2.2">
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+	<managed-bean>
+		<managed-bean-name>formAirplaneState</managed-bean-name>
+		<managed-bean-class>org.eu5.ainhoalm.airportAena.beans.FormAirplaneState</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>airplaneStateService</property-name>
+			<value>#{airplaneStateSERVICE}</value>
+		</managed-property>
+	</managed-bean>
+
 </faces-config>

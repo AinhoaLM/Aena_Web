@@ -17,6 +17,7 @@
 	para utilizar en este fichero COC y hacerlo mas corto -->
 	<!-- registers all Spring standard post-processors for annotation-based configuration, including CommonAnnotationBeanPostProcessor and so on. -->
 	<context:annotation-config /> 
+		<context:component-scan base-package="org.eu5.ainhoalm.airportAena.dao.hibernate" />
 	<!-- PARA POOL DE CONEXIONES -->
 	<bean class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" id="dataSource">
@@ -52,18 +53,20 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
-	<bean id="airplaneStateDAO"
-		class="org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneStateDAOHibernateImpl">
+<!-- Reemplazado por anotación @Repository -->
+<!-- 	<bean id="airplaneStateDAO" -->
+<!-- 		class="org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneStateDAOHibernateImpl"> -->
 		<!-- Reemplazado por anotación @Autowired -->
 <!--  		<property name="sessionFactory" ref="sessionFactory" />   -->
-	</bean>
-	<bean id="airplaneDAO"
-		class="org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneDAOHibernateImpl">
-	</bean>
+<!-- 	</bean> -->
+<!-- Reemplazado por anotación @Repository -->
+<!-- 	<bean id="airplaneDAO" -->
+<!-- 		class="org.eu5.ainhoalm.airportAena.dao.hibernate.AirplaneDAOHibernateImpl"> -->
+<!-- 	</bean> -->
 
 	<bean id="airplaneStateSERVICE"
 		class="org.eu5.ainhoalm.airportAena.service.impl.AirplaneStateServiceImpl">
+		<!--  Reemplazado por la anotación @Autowired -->
 		<property name="airplaneStateDAO" ref="airplaneStateDAO">
 		</property>
 	</bean>

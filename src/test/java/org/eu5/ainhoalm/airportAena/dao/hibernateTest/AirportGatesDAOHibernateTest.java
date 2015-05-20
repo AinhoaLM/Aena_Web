@@ -5,23 +5,26 @@ import static org.junit.Assert.assertNotEquals;
 
 import java.util.List;
 
+import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 import org.eu5.ainhoalm.airportAena.dao.AirportGatesDAO;
 import org.eu5.ainhoalm.airportAena.dao.hibernate.AirportGatesDAOHibernateImpl;
 import org.eu5.ainhoalm.airportAena.model.AirportGates;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AirportGatesDAOHibernateTest {
 	static AirportGatesDAO sut;
-	
+	static ClassPathXmlApplicationContext factoria;
 	
 
 	@BeforeClass  
 	public static void setUpClass() throws Exception {   
-		 sut = new AirportGatesDAOHibernateImpl();  
+		 factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
+		 sut= (AirportGatesDAO)factoria.getBean("airportGatesDAO");
 		 System.out.println("========================================================================================================");
-		 System.out.println("TEST AIRPORT GATES" );
+		 System.out.println("TEST AIRPORT GATES (Spring)" );
 		 System.out.println("========================================================================================================");
 	}  
 

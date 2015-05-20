@@ -6,8 +6,10 @@ import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+@Repository("airplaneStateDAO")
 public class AirplaneStateDAOHibernateImpl extends GenericDAOHibernateImpl<AirplaneState, Long> implements AirplaneStateDAO {
 
 	@SuppressWarnings("unchecked")

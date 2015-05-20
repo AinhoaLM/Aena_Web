@@ -4,31 +4,26 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
-
-
-
-
-
-
-
 import org.eu5.ainhoalm.airportAena.dao.FlightDAO;
-import org.eu5.ainhoalm.airportAena.dao.hibernate.FlightDAOHibernateImpl;
 import org.eu5.ainhoalm.airportAena.model.BoardingPass;
 import org.eu5.ainhoalm.airportAena.model.Flight;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class FlightDAOHibernateTest {
 	
 	static FlightDAO sut;
+	static ClassPathXmlApplicationContext factoria;
 	
 	@BeforeClass  
 	public static void setUpClass() throws Exception {   
-		sut = new FlightDAOHibernateImpl(); 
 		
+		factoria =new ClassPathXmlApplicationContext("aplicationContext.xml");
+		sut= (FlightDAO)factoria.getBean("flightDAO");
 
 		System.out.println("========================================================================================================");
-		System.out.println("TEST FLIGHT DAO" );
+		System.out.println("TEST FLIGHT DAO (Spring)" );
 		System.out.println("========================================================================================================");
 	}  
 

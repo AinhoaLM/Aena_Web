@@ -4,10 +4,7 @@ package org.eu5.ainhoalm.airportAena.dao.hibernateTest;
 import static org.junit.Assert.assertNotEquals;
 
 import java.util.List;
-
-import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 import org.eu5.ainhoalm.airportAena.dao.AirportGatesDAO;
-import org.eu5.ainhoalm.airportAena.dao.hibernate.AirportGatesDAOHibernateImpl;
 import org.eu5.ainhoalm.airportAena.model.AirportGates;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

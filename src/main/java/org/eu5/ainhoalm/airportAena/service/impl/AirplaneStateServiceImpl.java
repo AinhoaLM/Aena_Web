@@ -8,8 +8,10 @@ import org.eu5.ainhoalm.airportAena.dao.AirplaneStateDAO;
 import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 import org.eu5.ainhoalm.airportAena.service.AirplaneStateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+@Service(value="airplaneStateSERVICE")
 public class AirplaneStateServiceImpl implements AirplaneStateService{
 
 	private AirplaneStateDAO airplaneStateDAO=null;
@@ -23,13 +25,12 @@ public class AirplaneStateServiceImpl implements AirplaneStateService{
 	
 	
 	@Override
-	
 	public AirplaneStateDAO getAirplaneStateDAO() {
 		return airplaneStateDAO;
 	}
 
 	@Override
-	
+	@Autowired
 	public void setAirplaneStateDAO(AirplaneStateDAO airplaneStateDAO) {
 		this.airplaneStateDAO = airplaneStateDAO;
 	}

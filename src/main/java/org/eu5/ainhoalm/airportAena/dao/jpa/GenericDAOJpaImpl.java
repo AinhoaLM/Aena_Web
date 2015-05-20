@@ -9,13 +9,15 @@ import java.util.List;
 
 
 
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 
 import org.eu5.ainhoalm.airportAena.dao.GenericDAO;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
+@Repository
 public abstract class GenericDAOJpaImpl <T, Id extends Serializable>  implements GenericDAO<T,Id> {
 	
 	private Class<T> typeClass;

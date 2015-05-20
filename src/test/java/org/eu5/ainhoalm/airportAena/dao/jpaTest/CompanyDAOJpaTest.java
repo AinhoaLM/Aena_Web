@@ -1,10 +1,7 @@
 package org.eu5.ainhoalm.airportAena.dao.jpaTest;
 
 import static org.junit.Assert.*;
-
-import java.util.Date;
 import java.util.List;
-
 import org.eu5.ainhoalm.airportAena.dao.jpa.CompanyDAO;
 import org.eu5.ainhoalm.airportAena.model.annotation.Company;
 import org.junit.AfterClass;

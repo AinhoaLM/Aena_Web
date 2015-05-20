@@ -2,24 +2,13 @@ package org.eu5.ainhoalm.airportAena.beans;
 
 import java.io.Serializable;
 import java.util.List;
-
-
-
-
-
-
-
-
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-
-
-
-
 import org.eu5.ainhoalm.airportAena.model.AirplaneState;
 import org.eu5.ainhoalm.airportAena.service.AirplaneStateService;
+
 
 
 
@@ -66,7 +55,7 @@ public class FormAirplaneState implements Serializable {
 	//Método a ejecutar una vez iniciado el ManageBean
 	@PostConstruct
 	public void iniciar() {
-	listOfAriplaneState = airplaneStateService.findAllAirplaneState();
+		listOfAriplaneState = airplaneStateService.findAllAirplaneState();
 	}
 	
 	
